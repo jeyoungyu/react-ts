@@ -9,8 +9,14 @@ import './App.css'
 // import Card from './props/Card';
 // import Memo from './stroage/Memo';
 // import Todos from './stroage/Todos';
-import Posts from './posts/Posts';
-import PostDetail from './posts/PostDetail';
+// import Posts from './posts/Posts';
+// import PostDetail from './posts/PostDetail';
+// import AddPost from './posts/AddPost';
+// import Bank from './reducer/Bank';
+import ProductList from './products/ProductList';
+import Header from './layouts/Header';
+import Cart from './products/Cart';
+import CartProvider from './context/CartProvider';
 
 function App() {
 
@@ -22,16 +28,16 @@ function App() {
   return (
     <>
       <section className="app">
-        <BrowserRouter>
-          <Routes>
-            <Route path='/' element={<Posts />} />
-            <Route path='/posts/:id' element={<PostDetail />} />
-          </Routes>
-        </BrowserRouter>
-
-
-        {/* <Memo /> */}
-        {/* <Todos /> */}
+        {/* CartProvider로 감싸면 내부의 컴포넌트는 children이 됨  */}
+        <CartProvider>
+          <BrowserRouter>
+          <Header />
+            <Routes>
+              <Route path='/' element={<ProductList />} />
+              <Route path='/cart' element={<Cart />} />
+            </Routes>
+          </BrowserRouter>
+        </CartProvider>
 
         {/* <Card title="공지사항">
           <p>내일은 TypeScript 시험이 있습니다.</p>
